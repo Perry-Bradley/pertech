@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/components/sections/page-header";

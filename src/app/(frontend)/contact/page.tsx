@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+
 import { PageHeader } from "@/components/sections/page-header";
 import { ContactForm } from "@/components/sections/contact-form";
 import { FadeIn } from "@/components/animations/fade-in";

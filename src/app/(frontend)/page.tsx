@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
+
 import { Hero } from "@/components/sections/hero";
 import { ClientMarquee } from "@/components/sections/client-marquee";
 import { ServicesPreview } from "@/components/sections/services-preview";

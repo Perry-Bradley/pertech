@@ -222,86 +222,131 @@ function mapProject(doc: Record<string, unknown>): ProjectDTO {
 }
 
 // ---- Public API ------------------------------------------------------------
+// All public getters are defensive — if Payload / Postgres isn't ready
+// (cold start, schema not pushed, transient outage), they return safe
+// empty values so pages still render rather than crashing.
+
+function logErr(scope: string, err: unknown) {
+  console.warn(`[data] ${scope} failed:`, (err as Error)?.message ?? err);
+}
 
 export async function getServices(): Promise<ServiceDTO[]> {
-  const payload = await getPayload();
-  const res = await payload.find({
-    collection: "services",
-    limit: 100,
-    sort: "number",
-    depth: 1,
-  });
-  return res.docs.map((d) => mapService(d as unknown as Record<string, unknown>));
+  try {
+    const payload = await getPayload();
+    const res = await payload.find({
+      collection: "services",
+      limit: 100,
+      sort: "number",
+      depth: 1,
+    });
+    return res.docs.map((d) => mapService(d as unknown as Record<string, unknown>));
+  } catch (err) {
+    logErr("getServices", err);
+    return [];
+  }
 }
 
 export async function getService(slug: string): Promise<ServiceDTO | null> {
-  const payload = await getPayload();
-  const res = await payload.find({
-    collection: "services",
-    where: { slug: { equals: slug } },
-    limit: 1,
-    depth: 1,
-  });
-  const doc = res.docs[0];
-  return doc ? mapService(doc as unknown as Record<string, unknown>) : null;
+  try {
+    const payload = await getPayload();
+    const res = await payload.find({
+      collection: "services",
+      where: { slug: { equals: slug } },
+      limit: 1,
+      depth: 1,
+    });
+    const doc = res.docs[0];
+    return doc ? mapService(doc as unknown as Record<string, unknown>) : null;
+  } catch (err) {
+    logErr(`getService(${slug})`, err);
+    return null;
+  }
 }
 
 export async function getProjects(): Promise<ProjectDTO[]> {
-  const payload = await getPayload();
-  const res = await payload.find({
-    collection: "projects",
-    limit: 100,
-    sort: "order",
-    depth: 2,
-  });
-  return res.docs.map((d) => mapProject(d as unknown as Record<string, unknown>));
+  try {
+    const payload = await getPayload();
+    const res = await payload.find({
+      collection: "projects",
+      limit: 100,
+      sort: "order",
+      depth: 2,
+    });
+    return res.docs.map((d) => mapProject(d as unknown as Record<string, unknown>));
+  } catch (err) {
+    logErr("getProjects", err);
+    return [];
+  }
 }
 
 export async function getProject(slug: string): Promise<ProjectDTO | null> {
-  const payload = await getPayload();
-  const res = await payload.find({
-    collection: "projects",
-    where: { slug: { equals: slug } },
-    limit: 1,
-    depth: 2,
-  });
-  const doc = res.docs[0];
-  return doc ? mapProject(doc as unknown as Record<string, unknown>) : null;
+  try {
+    const payload = await getPayload();
+    const res = await payload.find({
+      collection: "projects",
+      where: { slug: { equals: slug } },
+      limit: 1,
+      depth: 2,
+    });
+    const doc = res.docs[0];
+    return doc ? mapProject(doc as unknown as Record<string, unknown>) : null;
+  } catch (err) {
+    logErr(`getProject(${slug})`, err);
+    return null;
+  }
 }
 
+const defaultSiteSettings: SiteSettingsDTO = {
+  siteName: "Pertech",
+  tagline: "Digital Studio for Ambitious Brands",
+  contactEmail: "hello@pertech.studio",
+  availability: "Available · Q3 2026",
+  defaultTitle: "Pertech — Digital Studio for Ambitious Brands",
+  titleTemplate: "%s | Pertech",
+  defaultDescription:
+    "Pertech is a design & engineering studio crafting premium digital products.",
+  defaultKeywords: "",
+  defaultOgImage: null,
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://pertech.studio",
+  social: [],
+};
+
 export async function getSiteSettings(): Promise<SiteSettingsDTO> {
-  const payload = await getPayload();
-  const s = (await payload.findGlobal({
-    slug: "site-settings",
-    depth: 1,
-  })) as unknown as {
-    siteName?: string;
-    tagline?: string;
-    contactEmail?: string;
-    availability?: string;
-    defaultTitle?: string;
-    titleTemplate?: string;
-    defaultDescription?: string;
-    defaultKeywords?: string;
-    defaultOgImage?: MediaLike;
-    siteUrl?: string;
-    social?: { label: string; url: string }[];
-  };
-  return {
-    siteName: s.siteName ?? "Pertech",
-    tagline: s.tagline ?? "Digital Studio for Ambitious Brands",
-    contactEmail: s.contactEmail ?? "hello@pertech.studio",
-    availability: s.availability ?? "Available · Q3 2026",
-    defaultTitle: s.defaultTitle ?? "Pertech — Digital Studio for Ambitious Brands",
-    titleTemplate: s.titleTemplate ?? "%s | Pertech",
-    defaultDescription:
-      s.defaultDescription ??
-      "Pertech is a design & engineering studio crafting premium digital products.",
-    defaultKeywords: s.defaultKeywords ?? "",
-    defaultOgImage: mediaUrl(s.defaultOgImage),
-    siteUrl: s.siteUrl ?? "https://pertech.studio",
-    social: s.social ?? [],
-  };
+  try {
+    const payload = await getPayload();
+    const s = (await payload.findGlobal({
+      slug: "site-settings",
+      depth: 1,
+    })) as unknown as {
+      siteName?: string;
+      tagline?: string;
+      contactEmail?: string;
+      availability?: string;
+      defaultTitle?: string;
+      titleTemplate?: string;
+      defaultDescription?: string;
+      defaultKeywords?: string;
+      defaultOgImage?: MediaLike;
+      siteUrl?: string;
+      social?: { label: string; url: string }[];
+    };
+    return {
+      siteName: s.siteName ?? defaultSiteSettings.siteName,
+      tagline: s.tagline ?? defaultSiteSettings.tagline,
+      contactEmail: s.contactEmail ?? defaultSiteSettings.contactEmail,
+      availability: s.availability ?? defaultSiteSettings.availability,
+      defaultTitle: s.defaultTitle ?? defaultSiteSettings.defaultTitle,
+      titleTemplate: s.titleTemplate ?? defaultSiteSettings.titleTemplate,
+      defaultDescription: s.defaultDescription ?? defaultSiteSettings.defaultDescription,
+      defaultKeywords: s.defaultKeywords ?? defaultSiteSettings.defaultKeywords,
+      defaultOgImage: mediaUrl(s.defaultOgImage),
+      siteUrl: s.siteUrl ?? defaultSiteSettings.siteUrl,
+      social: s.social ?? [],
+    };
+  } catch (err) {
+    logErr("getSiteSettings", err);
+    return defaultSiteSettings;
+  }
 }
 
 // ---- Page-content globals --------------------------------------------------
@@ -381,9 +426,15 @@ function readCta(v: unknown): Cta {
   return { label: c.label ?? "Start a project", href: c.href ?? "/contact" };
 }
 
-export async function getHomePageContent(): Promise<HomePageContent> {
-  const payload = await getPayload();
-  const g = (await payload.findGlobal({ slug: "home-page", depth: 1 })) as unknown as Record<string, unknown>;
+export async function getHomePageContent(): Promise<HomePageContent | null> {
+  let g: Record<string, unknown>;
+  try {
+    const payload = await getPayload();
+    g = (await payload.findGlobal({ slug: "home-page", depth: 1 })) as unknown as Record<string, unknown>;
+  } catch (err) {
+    logErr("getHomePageContent", err);
+    return null;
+  }
   return {
     heroBadge: (g.heroBadge as string) ?? "Available · Q3 2026",
     heroMeta: (g.heroMeta as string) ?? "Studio of 8 · Remote-first",
@@ -425,9 +476,15 @@ export async function getHomePageContent(): Promise<HomePageContent> {
   };
 }
 
-export async function getAboutPageContent(): Promise<AboutPageContent> {
-  const payload = await getPayload();
-  const g = (await payload.findGlobal({ slug: "about-page", depth: 1 })) as unknown as Record<string, unknown>;
+export async function getAboutPageContent(): Promise<AboutPageContent | null> {
+  let g: Record<string, unknown>;
+  try {
+    const payload = await getPayload();
+    g = (await payload.findGlobal({ slug: "about-page", depth: 1 })) as unknown as Record<string, unknown>;
+  } catch (err) {
+    logErr("getAboutPageContent", err);
+    return null;
+  }
   return {
     eyebrow: (g.eyebrow as string) ?? "Studio",
     title: (g.title as string) ?? "",
@@ -446,9 +503,15 @@ export async function getAboutPageContent(): Promise<AboutPageContent> {
   };
 }
 
-export async function getContactPageContent(): Promise<ContactPageContent> {
-  const payload = await getPayload();
-  const g = (await payload.findGlobal({ slug: "contact-page", depth: 1 })) as unknown as Record<string, unknown>;
+export async function getContactPageContent(): Promise<ContactPageContent | null> {
+  let g: Record<string, unknown>;
+  try {
+    const payload = await getPayload();
+    g = (await payload.findGlobal({ slug: "contact-page", depth: 1 })) as unknown as Record<string, unknown>;
+  } catch (err) {
+    logErr("getContactPageContent", err);
+    return null;
+  }
   return {
     eyebrow: (g.eyebrow as string) ?? "Contact",
     title: (g.title as string) ?? "",
@@ -463,35 +526,60 @@ export async function getContactPageContent(): Promise<ContactPageContent> {
   };
 }
 
+const simplePageFallback: Record<string, SimplePageContent> = {
+  "services-index-page": {
+    eyebrow: "Services",
+    title: "Six disciplines. One studio.",
+    description:
+      "We're senior practitioners in design, engineering, and growth. Every engagement is led end-to-end by people who've shipped at scale.",
+  },
+  "portfolio-index-page": {
+    eyebrow: "Work",
+    title: "Selected case studies.",
+    description:
+      "A handful of recent engagements we're proud to put our name on. More available on request — some work lives behind NDAs.",
+  },
+};
+
 export async function getSimplePageContent(
   slug: "services-index-page" | "portfolio-index-page"
 ): Promise<SimplePageContent> {
-  const payload = await getPayload();
-  const g = (await payload.findGlobal({ slug })) as unknown as Record<string, unknown>;
-  return {
-    eyebrow: (g.eyebrow as string) ?? "",
-    title: (g.title as string) ?? "",
-    description: (g.description as string) ?? "",
-  };
+  try {
+    const payload = await getPayload();
+    const g = (await payload.findGlobal({ slug })) as unknown as Record<string, unknown>;
+    return {
+      eyebrow: (g.eyebrow as string) ?? simplePageFallback[slug].eyebrow,
+      title: (g.title as string) ?? simplePageFallback[slug].title,
+      description: (g.description as string) ?? simplePageFallback[slug].description,
+    };
+  } catch (err) {
+    logErr(`getSimplePageContent(${slug})`, err);
+    return simplePageFallback[slug];
+  }
 }
 
 export type PageKey = "home" | "services" | "portfolio" | "about" | "contact";
 
 export async function getPageSeo(key: PageKey): Promise<SeoFields> {
-  const payload = await getPayload();
-  const p = (await payload.findGlobal({ slug: "pages", depth: 1 })) as unknown as Record<
-    string,
-    SeoFields & { ogImage?: MediaLike }
-  >;
-  const v = p[key];
-  if (!v) return {};
-  return {
-    title: v.title,
-    description: v.description,
-    keywords: v.keywords,
-    ogImage: mediaUrl(v.ogImage),
-    noindex: v.noindex,
-  };
+  try {
+    const payload = await getPayload();
+    const p = (await payload.findGlobal({ slug: "pages", depth: 1 })) as unknown as Record<
+      string,
+      SeoFields & { ogImage?: MediaLike }
+    >;
+    const v = p[key];
+    if (!v) return {};
+    return {
+      title: v.title,
+      description: v.description,
+      keywords: v.keywords,
+      ogImage: mediaUrl(v.ogImage),
+      noindex: v.noindex,
+    };
+  } catch (err) {
+    logErr(`getPageSeo(${key})`, err);
+    return {};
+  }
 }
 
 /** Compose metadata from page-level + collection-item-level + site defaults. */
