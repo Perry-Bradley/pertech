@@ -2,7 +2,29 @@
   "permissions": {
     "allow": [
       "Bash(dir \"C:\\\\Users\\\\USER\\\\Desktop\\\\pertech\")",
-      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --src-dir --eslint --no-import-alias --use-npm --turbopack --yes)"
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --src-dir --eslint --no-import-alias --use-npm --turbopack --yes)",
+      "Read(//c/c/Users/USER/Desktop/**)",
+      "Read(//c/c/Users/USER/Desktop/pertech/**)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s -o /dev/null -w 'HTTP %{http_code}  time=%{time_total}s\\\\n' http://localhost:3001__TRACKED_VAR__)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}  time=%{time_total}s\\\\n\" \"http://localhost:3001/\")",
+      "Bash(curl -s -o /dev/null -w \"icon.svg: HTTP %{http_code}\\\\n\" \"http://localhost:3001/icon.svg\")",
+      "Bash(curl -s -o /dev/null -w \"/ HTTP %{http_code}  time=%{time_total}s\\\\n\" \"http://localhost:3001/\")",
+      "Bash(mkdir -p \"\\(frontend\\)\")",
+      "Bash(mv layout.tsx page.tsx about contact portfolio services \"\\(frontend\\)/\")",
+      "Bash(tasklist)",
+      "Bash(taskkill //IM node.exe //F)",
+      "Bash(PAYLOAD_DROP_DATABASE=true npm run seed)",
+      "Bash(rm -f pertech.db dev.log seed.log)",
+      "Bash(PORT=3001 npm run dev)",
+      "Bash(curl -s -o /dev/null -w \"admin: HTTP %{http_code}  time=%{time_total}s\\\\n\" -L \"http://localhost:3001/admin\" --max-time 90)",
+      "Bash(rm -f dev.log)",
+      "Bash(curl -s \"http://localhost:3001/api/seed\" --max-time 120)",
+      "Bash(npx payload *)",
+      "Bash(curl -s -o /dev/null -w \"/admin: HTTP %{http_code}  time=%{time_total}s\\\\n\" --max-time 30 \"http://localhost:3001/admin\")",
+      "Bash(taskkill /F /PID 20248)",
+      "Bash(curl -s \"http://localhost:3001/api/seed\" --max-time 240)",
+      "Bash(node -e \"console.log\\('PAYLOAD_SECRET=' + require\\('crypto'\\).randomBytes\\(32\\).toString\\('hex'\\)\\); console.log\\('SEED_SECRET=' + require\\('crypto'\\).randomBytes\\(16\\).toString\\('hex'\\)\\)\")"
     ]
   }
 }
