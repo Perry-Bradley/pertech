@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,6 +18,33 @@ const defaultServices = [
   "Social media",
   "Not sure yet",
 ];
+
+// Staggered entrance — parent triggers children to animate one after another
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 18, filter: "blur(6px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const pill: Variants = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
+};
 
 export function ContactForm({
   serviceOptions = defaultServices,
@@ -42,14 +69,21 @@ export function ContactForm({
     );
 
   return (
-    <form
+    <motion.form
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={container}
       onSubmit={(e) => {
         e.preventDefault();
         setSent(true);
       }}
       className="space-y-10"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <motion.div
+        variants={item}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
         <div className="space-y-2">
           <Label htmlFor="name">Your name</Label>
           <Input id="name" name="name" required placeholder="Jane Doe" />
@@ -72,51 +106,67 @@ export function ContactForm({
           <Label htmlFor="role">Your role</Label>
           <Input id="role" name="role" placeholder="Founder, CTO, PM…" />
         </div>
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div variants={item}>
         <Label className="mb-3 block">What do you need help with?</Label>
-        <div className="flex flex-wrap gap-2">
+        <motion.div
+          className="flex flex-wrap gap-2"
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.04 } },
+          }}
+        >
           {services.map((s) => (
-            <button
+            <motion.button
+              variants={pill}
               key={s}
               type="button"
               onClick={() => toggleService(s)}
+              whileTap={{ scale: 0.95 }}
               className={cn(
-                "rounded-full border border-border px-4 py-2 text-sm transition-all",
+                "rounded-full border border-border px-4 py-2 text-sm transition-colors",
                 selectedServices.includes(s)
                   ? "bg-foreground text-background border-foreground"
                   : "bg-background/40 hover:bg-accent"
               )}
             >
               {s}
-            </button>
+            </motion.button>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div>
+      <motion.div variants={item}>
         <Label className="mb-3 block">Project budget</Label>
-        <div className="flex flex-wrap gap-2">
+        <motion.div
+          className="flex flex-wrap gap-2"
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.05 } },
+          }}
+        >
           {budgets.map((b) => (
-            <button
+            <motion.button
+              variants={pill}
               key={b}
               type="button"
               onClick={() => setBudget(b)}
+              whileTap={{ scale: 0.95 }}
               className={cn(
-                "rounded-full border border-border px-4 py-2 text-sm transition-all",
+                "rounded-full border border-border px-4 py-2 text-sm transition-colors",
                 budget === b
                   ? "bg-foreground text-background border-foreground"
                   : "bg-background/40 hover:bg-accent"
               )}
             >
               {b}
-            </button>
+            </motion.button>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="space-y-2">
+      <motion.div variants={item} className="space-y-2">
         <Label htmlFor="message">Tell us about the project</Label>
         <Textarea
           id="message"
@@ -125,9 +175,12 @@ export function ContactForm({
           placeholder="Goals, timelines, anything we should know…"
           rows={6}
         />
-      </div>
+      </motion.div>
 
-      <div className="flex flex-wrap items-center gap-6">
+      <motion.div
+        variants={item}
+        className="flex flex-wrap items-center gap-6"
+      >
         <button
           type="submit"
           disabled={sent}
@@ -164,10 +217,8 @@ export function ContactForm({
           </AnimatePresence>
         </button>
 
-        <p className="text-sm text-muted-foreground">
-          {footerNote}
-        </p>
-      </div>
-    </form>
+        <p className="text-sm text-muted-foreground">{footerNote}</p>
+      </motion.div>
+    </motion.form>
   );
 }

@@ -78,10 +78,12 @@ export function ServicesPreview({
                     </div>
 
                     <div className="space-y-4">
-                      <Icon
-                        className="h-7 w-7 text-muted-foreground transition-colors group-hover:text-foreground"
-                        strokeWidth={1.5}
-                      />
+                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-foreground group-hover:text-background group-hover:rotate-[-6deg]">
+                        <Icon
+                          className="h-5 w-5 text-muted-foreground transition-colors duration-500 group-hover:text-background"
+                          strokeWidth={1.5}
+                        />
+                      </span>
                       <h3 className="font-display text-3xl md:text-4xl tracking-tight">
                         {service.name}
                       </h3>

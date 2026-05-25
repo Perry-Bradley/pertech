@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navigation/navbar";
 import { ServerFooter } from "@/components/sections/server-footer";
 import { SmoothCursor } from "@/components/animations/smooth-cursor";
 import { ScrollProgress } from "@/components/animations/scroll-progress";
+import { SmoothScroll } from "@/components/animations/smooth-scroll";
 import { getSiteSettings } from "@/lib/data";
 
 const inter = Inter({
@@ -72,10 +73,11 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
+          <SmoothScroll />
           <ScrollProgress />
           <SmoothCursor />
           <div className="relative flex min-h-screen flex-col">

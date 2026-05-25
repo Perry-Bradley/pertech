@@ -89,9 +89,27 @@
     border-color: var(--border);
   }
   html {
+    /* Lenis manages scroll smoothing on desktop; this is the touch fallback */
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+  /* Lenis takes over on desktop — disable native smoothing to avoid double easing */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
   }
   body {
     background: var(--background);

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { TextReveal } from "@/components/animations/text-reveal";
+import { ScrollRevealText } from "@/components/animations/scroll-reveal-text";
 
 export function AboutStrip({
   eyebrow = "About the studio",
@@ -29,7 +29,7 @@ export function AboutStrip({
           </div>
 
           <div className="md:col-span-8">
-            <TextReveal
+            <ScrollRevealText
               text={body}
               as="h2"
               className="font-display text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] text-balance"
