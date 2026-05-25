@@ -24,13 +24,16 @@ export function SmoothScroll() {
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
 
     const lenis = new Lenis({
-      duration: isTouch ? 0.9 : 1.15,
+      duration: isTouch ? 1.4 : 1.15,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: isTouch ? 2.2 : 1.5,
-      // Lower lerp on touch = snappier response to swipes
-      lerp: isTouch ? 0.12 : 0.085,
+      // 1:1 finger-to-scroll ratio — matches native iOS/Android pace
+      touchMultiplier: 1,
+      // Higher lerp on touch = more easing, less twitchy
+      lerp: isTouch ? 0.08 : 0.085,
+      // syncTouch lets native touch events through so iOS address-bar
+      // auto-hide + pull-to-refresh still work
       syncTouch: isTouch,
     });
 
