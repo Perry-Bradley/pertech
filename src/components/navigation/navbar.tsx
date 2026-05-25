@@ -47,17 +47,25 @@ export function Navbar() {
       >
         <div
           className={cn(
-            "mx-auto flex max-w-6xl items-center justify-between gap-6 rounded-full p-2 md:p-2.5 md:pl-7 transition-all duration-500",
-            "border border-transparent",
+            "relative mx-auto flex max-w-6xl items-center justify-between gap-6 rounded-full p-2 md:p-2.5 md:pl-7 transition-all duration-500",
+            // Frosted glass — always on, intensifies on scroll
+            "border bg-background/30 backdrop-blur-xl backdrop-saturate-150",
+            // Inner highlight (top edge) gives the "lit glass" look; outer shadow gives lift
+            "shadow-[0_4px_20px_-8px_rgba(0,0,0,0.25),inset_0_1px_0_0_rgba(255,255,255,0.08)]",
             scrolled
-              ? "border-border/70 bg-background/70 backdrop-blur-xl shadow-[0_8px_30px_-12px_rgba(0,0,0,0.35)]"
-              : "border-transparent bg-transparent"
+              ? "border-border/70 bg-background/55 backdrop-blur-2xl shadow-[0_14px_40px_-12px_rgba(0,0,0,0.45),inset_0_1px_0_0_rgba(255,255,255,0.12)]"
+              : "border-border/30"
           )}
           style={{ width: "min(100% - 1.5rem, 72rem)" }}
         >
-          <Logo size={30} className="pl-2 md:pl-0" />
+          {/* Glass top-edge sheen */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/[0.07] via-white/[0.02] to-transparent"
+          />
+          <Logo size={30} className="relative pl-2 md:pl-0" />
 
-          <nav className="hidden md:flex items-center gap-1 text-sm">
+          <nav className="relative hidden md:flex items-center gap-1 text-sm">
             {navLinks.map((l) => {
               const active =
                 l.href === "/"
@@ -85,7 +93,7 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="relative flex items-center gap-2">
             <ThemeToggle className="hidden md:inline-flex h-12 w-12" />
             <Magnetic className="hidden md:inline-block" strength={0.4}>
               <Link
