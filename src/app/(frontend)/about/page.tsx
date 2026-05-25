@@ -5,7 +5,7 @@ export const dynamic = "force-dynamic";
 import Image from "next/image";
 import { PageHeader } from "@/components/sections/page-header";
 import { FadeIn } from "@/components/animations/fade-in";
-import { TextReveal } from "@/components/animations/text-reveal";
+import { ScrollRevealText } from "@/components/animations/scroll-reveal-text";
 import { Stats } from "@/components/sections/stats";
 import { ClientMarquee } from "@/components/sections/client-marquee";
 import { CTA } from "@/components/sections/cta";
@@ -53,7 +53,7 @@ export default async function AboutPage() {
 
       <section className="bg-background py-20 md:py-32 border-b border-border">
         <div className="mx-auto max-w-7xl px-6">
-          <TextReveal
+          <ScrollRevealText
             text={c.intro}
             as="h2"
             className="font-display text-3xl md:text-6xl leading-[1.05] tracking-[-0.02em] text-balance"

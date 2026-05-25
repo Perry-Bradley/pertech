@@ -8,6 +8,7 @@ import Image from "next/image";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/animations/fade-in";
 import { TextReveal } from "@/components/animations/text-reveal";
+import { ScrollRevealText } from "@/components/animations/scroll-reveal-text";
 import { CTA } from "@/components/sections/cta";
 import { Noise } from "@/components/animations/noise";
 import { buildMetadata, getProject, getProjects } from "@/lib/data";
@@ -145,9 +146,11 @@ export default async function ProjectPage({ params }: { params: RouteParams }) {
             </FadeIn>
           </div>
           <FadeIn delay={0.1} className="md:col-span-8">
-            <p className="font-display text-2xl md:text-4xl leading-[1.15] tracking-[-0.01em] text-pretty mb-12">
-              {project.description}
-            </p>
+            <ScrollRevealText
+              text={project.description}
+              as="p"
+              className="font-display text-2xl md:text-4xl leading-[1.15] tracking-[-0.01em] text-pretty mb-12 block"
+            />
             <div className="space-y-10">
               <Block label="Challenge" body={project.challenge} />
               <Block label="Approach" body={project.approach} />

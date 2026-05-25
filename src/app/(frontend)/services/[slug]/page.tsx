@@ -15,6 +15,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CTA } from "@/components/sections/cta";
+import { ScrollRevealText } from "@/components/animations/scroll-reveal-text";
 import { buildMetadata, getService, getServices } from "@/lib/data";
 import { getIcon } from "@/lib/icon-map";
 
@@ -73,9 +74,11 @@ export default async function ServiceDetailPage({
                 Overview
               </span>
             </div>
-            <p className="font-display text-2xl md:text-4xl leading-[1.15] tracking-[-0.01em] text-pretty">
-              {service.description}
-            </p>
+            <ScrollRevealText
+              text={service.description}
+              as="p"
+              className="font-display text-2xl md:text-4xl leading-[1.15] tracking-[-0.01em] text-pretty"
+            />
           </FadeIn>
 
           <FadeIn delay={0.2} className="md:col-span-4 md:col-start-9 space-y-8">
