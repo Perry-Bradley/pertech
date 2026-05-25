@@ -1,12 +1,116 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { ArrowUpRight, type LucideIcon } from "lucide-react";
+import { useRef } from "react";
 import { SectionHeading } from "./section-heading";
 import { Spotlight } from "@/components/animations/spotlight";
 import { getIcon } from "@/lib/icon-map";
 import type { ServiceDTO } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { useNoHover } from "@/lib/use-no-hover";
+
+function ServiceCard({
+  service,
+  index,
+}: {
+  service: ServiceDTO;
+  index: number;
+}) {
+  const Icon: LucideIcon = getIcon(service.iconName);
+  const cardRef = useRef<HTMLAnchorElement>(null);
+  const inView = useInView(cardRef, { once: true, amount: 0.55 });
+  const noHover = useNoHover();
+
+  // On touch devices, fire the "hovered" visual when the card scrolls into view.
+  // On desktop, leave it to actual mouse hover via the group-hover classes.
+  const fakeHover = noHover && inView;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.08,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="bg-background"
+    >
+      <Spotlight className="h-full rounded-none">
+        <Link
+          ref={cardRef}
+          href={`/services/${service.slug}`}
+          className={cn(
+            "group relative flex h-full flex-col justify-between gap-8 p-8 md:p-10 transition-colors hover:bg-accent/40",
+            fakeHover && "bg-accent/40"
+          )}
+        >
+          <div className="flex items-start justify-between">
+            <span className="font-mono text-xs text-muted-foreground">
+              {service.number}
+            </span>
+            <span
+              className={cn(
+                "inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/60 backdrop-blur transition-all duration-500",
+                "group-hover:rotate-45 group-hover:bg-foreground group-hover:text-background",
+                fakeHover && "rotate-45 bg-foreground text-background"
+              )}
+            >
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
+          </div>
+
+          <div className="space-y-4">
+            <span
+              className={cn(
+                "inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background/60 transition-all duration-700 ease-out",
+                "group-hover:-translate-y-1 group-hover:bg-foreground group-hover:text-background group-hover:rotate-[-6deg]",
+                fakeHover && "-translate-y-1 bg-foreground text-background rotate-[-6deg]"
+              )}
+              style={{
+                // Small delay on the touch-triggered version so it lands
+                // a beat after the card itself fades in
+                transitionDelay: fakeHover ? "300ms" : "0ms",
+              }}
+            >
+              <Icon
+                className={cn(
+                  "h-5 w-5 text-muted-foreground transition-colors duration-700 ease-out",
+                  "group-hover:text-background",
+                  fakeHover && "text-background"
+                )}
+                style={{
+                  transitionDelay: fakeHover ? "300ms" : "0ms",
+                }}
+                strokeWidth={1.5}
+              />
+            </span>
+            <h3 className="font-display text-3xl md:text-4xl tracking-tight">
+              {service.name}
+            </h3>
+            <p className="max-w-md text-pretty text-sm md:text-base text-muted-foreground">
+              {service.tagline}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {service.features.slice(0, 3).map((f) => (
+              <span
+                key={f.title}
+                className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs text-muted-foreground"
+              >
+                {f.title}
+              </span>
+            ))}
+          </div>
+        </Link>
+      </Spotlight>
+    </motion.div>
+  );
+}
 
 export function ServicesPreview({
   services,
@@ -48,65 +152,9 @@ export function ServicesPreview({
         </div>
 
         <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2">
-          {services.map((service, i) => {
-            const Icon = getIcon(service.iconName);
-            return (
-              <motion.div
-                key={service.slug}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  duration: 0.7,
-                  delay: i * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="bg-background"
-              >
-                <Spotlight className="h-full rounded-none">
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="group relative flex h-full flex-col justify-between gap-8 p-8 md:p-10 transition-colors hover:bg-accent/40"
-                  >
-                    <div className="flex items-start justify-between">
-                      <span className="font-mono text-xs text-muted-foreground">
-                        {service.number}
-                      </span>
-                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/60 backdrop-blur transition-all duration-500 group-hover:rotate-45 group-hover:bg-foreground group-hover:text-background">
-                        <ArrowUpRight className="h-4 w-4" />
-                      </span>
-                    </div>
-
-                    <div className="space-y-4">
-                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-background/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-foreground group-hover:text-background group-hover:rotate-[-6deg]">
-                        <Icon
-                          className="h-5 w-5 text-muted-foreground transition-colors duration-500 group-hover:text-background"
-                          strokeWidth={1.5}
-                        />
-                      </span>
-                      <h3 className="font-display text-3xl md:text-4xl tracking-tight">
-                        {service.name}
-                      </h3>
-                      <p className="max-w-md text-pretty text-sm md:text-base text-muted-foreground">
-                        {service.tagline}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.slice(0, 3).map((f) => (
-                        <span
-                          key={f.title}
-                          className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs text-muted-foreground"
-                        >
-                          {f.title}
-                        </span>
-                      ))}
-                    </div>
-                  </Link>
-                </Spotlight>
-              </motion.div>
-            );
-          })}
+          {services.map((service, i) => (
+            <ServiceCard key={service.slug} service={service} index={i} />
+          ))}
         </div>
       </div>
     </section>

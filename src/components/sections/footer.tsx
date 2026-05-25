@@ -37,7 +37,7 @@ export function Footer({
   contactEmail = "hello@pertech.studio",
 }: FooterProps) {
   return (
-    <footer className="relative border-t border-border bg-background">
+    <footer className="dark relative border-t border-border bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 pt-20 pb-10">
         {/* Massive wordmark */}
         <motion.div

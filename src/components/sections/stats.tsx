@@ -67,7 +67,7 @@ export function Stats({
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-2 gap-px overflow-hidden md:grid-cols-4 rounded-2xl border border-border bg-border">
+        <div className="dark grid grid-cols-2 gap-px overflow-hidden md:grid-cols-4 rounded-2xl border border-border bg-border text-foreground">
           {list.map((s, i) => (
             <motion.div
               key={s.label}

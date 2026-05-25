@@ -16,19 +16,22 @@ export function SmoothScroll() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Skip on touch / reduced-motion devices
-    const mq = window.matchMedia(
-      "(pointer: coarse), (prefers-reduced-motion: reduce)"
-    );
+    // Only skip on reduced-motion preference. Touch devices now get smooth
+    // scroll too — tuned to feel responsive (lower lerp, higher touch multiplier).
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mq.matches) return;
 
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: isTouch ? 0.9 : 1.15,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-      lerp: 0.085,
+      touchMultiplier: isTouch ? 2.2 : 1.5,
+      // Lower lerp on touch = snappier response to swipes
+      lerp: isTouch ? 0.12 : 0.085,
+      syncTouch: isTouch,
     });
 
     let rafId: number;

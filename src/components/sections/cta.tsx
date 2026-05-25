@@ -27,7 +27,7 @@ export function CTA({
   return (
     <section className="relative overflow-hidden py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-border bg-card grain">
+        <div className="dark relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-border bg-card text-foreground grain">
           <GridPattern size={48} />
           <Noise />
 
