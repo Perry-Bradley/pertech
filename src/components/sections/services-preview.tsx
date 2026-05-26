@@ -117,7 +117,7 @@ export function ServicesPreview({
   eyebrow = "Services",
   titleLineOne = "Six disciplines.",
   titleLineTwo = "One studio.",
-  description = "We don't subcontract the work that matters. Every service is owned by senior practitioners who've shipped at scale.",
+  description = "Nothing gets subcontracted. Every service is owned, scoped, and shipped by one practitioner with a decade of work behind him.",
 }: {
   services: ServiceDTO[];
   eyebrow?: string;

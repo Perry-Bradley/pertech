@@ -56,8 +56,8 @@ export function Footer({
           <div className="col-span-2 md:col-span-1">
             <Logo />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              Design & engineering studio crafting premium digital products for
-              ambitious teams.
+              Solo design & engineering studio crafting premium digital
+              products for ambitious teams.
             </p>
             <p className="mt-6 text-xs uppercase tracking-[0.25em] text-muted-foreground">
               {availability}

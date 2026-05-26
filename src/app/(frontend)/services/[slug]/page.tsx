@@ -192,7 +192,10 @@ export default async function ServiceDetailPage({
               {service.pricing.map((p, i) => (
                 <FadeIn key={p.tier} delay={i * 0.1}>
                   <Spotlight className="rounded-2xl">
-                    <div className="group flex flex-col gap-3 md:flex-row md:items-center md:justify-between rounded-2xl border border-border bg-card p-6 md:p-8 transition-colors hover:bg-accent/40">
+                    <Link
+                      href="/contact"
+                      className="group flex flex-col gap-3 md:flex-row md:items-center md:justify-between rounded-2xl border border-border bg-card p-6 md:p-8 transition-colors hover:bg-accent/40"
+                    >
                       <div>
                         <h3 className="font-display text-2xl md:text-3xl tracking-tight">
                           {p.tier}
@@ -201,21 +204,29 @@ export default async function ServiceDetailPage({
                           {p.for}
                         </p>
                       </div>
-                      <div className="flex items-center gap-6">
-                        <p className="font-mono text-lg">{p.price}</p>
-                        <Link
-                          href="/contact"
-                          aria-label="Inquire"
+                      <div className="flex items-center gap-4">
+                        <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+                          Request a quote
+                        </span>
+                        <span
+                          aria-hidden
                           className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background/60 transition-all group-hover:rotate-45 group-hover:bg-foreground group-hover:text-background"
                         >
                           <ArrowUpRight className="h-4 w-4" />
-                        </Link>
+                        </span>
                       </div>
-                    </div>
+                    </Link>
                   </Spotlight>
                 </FadeIn>
               ))}
             </div>
+            <FadeIn delay={0.3}>
+              <p className="mt-6 text-sm text-muted-foreground">
+                Every engagement is quoted to scope. Tell us about your project
+                and we&apos;ll come back within one business day with a detailed
+                estimate.
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>

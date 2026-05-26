@@ -14,10 +14,10 @@ const defaultSteps: Step[] = [
 ];
 
 export function Process({
-  eyebrow = "How we work",
+  eyebrow = "How I work",
   titleLineOne = "A studio process,",
   titleLineTwo = "not an agency one.",
-  description = "We collaborate the way the best in-house teams do — with high context, weekly working sessions, and shared definitions of done.",
+  description = "I collaborate the way the best in-house engineers do — with high context, weekly working sessions, and shared definitions of done. One person, one direct line.",
   steps = defaultSteps,
 }: {
   eyebrow?: string;

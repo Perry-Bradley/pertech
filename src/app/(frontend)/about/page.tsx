@@ -36,14 +36,14 @@ export default async function AboutPage() {
 
   const c = content ?? {
     eyebrow: "Studio",
-    title: "A small studio with senior taste.",
-    description: "Eight humans, twelve time zones over the last decade, and a shared belief that craft is not optional.",
-    intro: "We started Pertech in 2021 because the work we wanted to make didn't exist at the agencies we'd worked at. Today we're a small remote-first studio partnering with founders and product leaders to ship rare, durable, opinionated work.",
+    title: "A solo studio with a high taste bar.",
+    description: "One person, end-to-end. A decade of shipped work behind it, and a belief that craft is not optional.",
+    intro: "Pertech is a one-person studio run by Perry Bradley. After years of shipping at agencies, the work that mattered most always came from small teams obsessed with the details. Pertech is that idea taken to its limit — one engineer, one designer, one direct line.",
     principlesEyebrow: "Principles",
-    principlesTitle: "What we believe.",
+    principlesTitle: "What I believe.",
     principles: [],
-    teamEyebrow: "The team",
-    teamTitle: "Eight people doing the work.",
+    teamEyebrow: "The studio",
+    teamTitle: "One person, end to end.",
     team: [],
   };
 

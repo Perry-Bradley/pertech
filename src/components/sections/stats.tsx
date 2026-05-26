@@ -7,10 +7,10 @@ import { FadeIn } from "@/components/animations/fade-in";
 type Stat = { value: number; suffix: string; label: string };
 
 const defaultStats: Stat[] = [
-  { value: 120, suffix: "+", label: "Products shipped" },
-  { value: 42, suffix: "M+", label: "Users reached" },
-  { value: 9, suffix: "yrs", label: "Median engineer experience" },
-  { value: 98, suffix: "%", label: "Client retention" },
+  { value: 40, suffix: "+", label: "Products shipped" },
+  { value: 10, suffix: "M+", label: "Users reached" },
+  { value: 9, suffix: "yrs", label: "Engineering experience" },
+  { value: 100, suffix: "%", label: "Hands-on involvement" },
 ];
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
@@ -39,7 +39,7 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
 export function Stats({
   stats = defaultStats,
   eyebrow = "By the numbers",
-  title = "A decade of work, condensed.",
+  title = "A decade of work, distilled into one studio.",
 }: {
   stats?: Stat[];
   eyebrow?: string;
@@ -61,7 +61,7 @@ export function Stats({
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="max-w-sm text-sm text-muted-foreground">
-              Each number is real. Aggregated across the studio&apos;s engagements
+              Each number is real. Aggregated across every engagement
               since 2021.
             </p>
           </FadeIn>

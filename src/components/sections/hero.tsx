@@ -26,7 +26,7 @@ const defaultWords = [
 
 export function Hero({
   badge = "Available · Q3 2026",
-  meta = "Studio of 8 · Remote-first",
+  meta = "Solo studio · Remote",
   words = defaultWords,
   description = "Pertech is a design and engineering studio for brands that refuse to look generic. We build websites, products, mobile apps, and growth systems the way they should have been built the first time.",
   primaryCTA = { label: "Start a project", href: "/contact" },
