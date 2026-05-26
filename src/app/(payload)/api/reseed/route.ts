@@ -101,7 +101,7 @@ export async function GET(req: NextRequest) {
       description:
         "One person, end-to-end. Five years of shipped work behind it, and a belief that craft is not optional.",
       intro:
-        "Pertech is a one-person studio run by Perry Bradley — a software engineer based in Cameroon with five years of production work behind him. Perry builds across the stack: TypeScript for web (Next.js, React), Dart for mobile (Flutter), and Python for the machine-learning pieces in between. His portfolio spans healthcare platforms (CarePulse, Clinix), identity & auth systems (PassQ), applied ML for agriculture (plant disease detection), and a steady stream of marketing sites and product UIs for founders. Pertech is what happens when you trust one craftsman with the whole problem instead of stitching together five vendors.",
+        "Pertech is a one-person studio run by Perry Bradley — a certified fullstack engineer, designer, and SEO specialist based in Cameroon. Five years across the disciplines that actually ship a product: design, fullstack web, WordPress, mobile, SEO, and DevOps. One taste bar, one direct line, no hand-offs.",
       principlesEyebrow: "Principles",
       principlesTitle: "What I believe.",
       principles: [

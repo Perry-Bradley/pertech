@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
 
-import Image from "next/image";
 import { PageHeader } from "@/components/sections/page-header";
 import { FadeIn } from "@/components/animations/fade-in";
 import { ScrollRevealText } from "@/components/animations/scroll-reveal-text";
@@ -38,7 +37,7 @@ export default async function AboutPage() {
     eyebrow: "Studio",
     title: "A solo studio with a high taste bar.",
     description: "One person, end-to-end. Five years of shipped work behind it, and a belief that craft is not optional.",
-    intro: "Pertech is a one-person studio run by Perry Bradley — a software engineer based in Cameroon with five years of production work behind him. He builds across the stack: TypeScript for web (Next.js, React), Dart for mobile (Flutter), and Python for the machine-learning pieces in between. Past work spans healthcare platforms, identity & auth systems, applied ML for agriculture, and a steady stream of marketing sites for founders. Pertech is what happens when you trust one craftsman with the whole problem instead of stitching together five vendors.",
+    intro: "Pertech is a one-person studio run by Perry Bradley — a certified fullstack engineer, designer, and SEO specialist based in Cameroon. Five years across the disciplines that actually ship a product: design, fullstack web, WordPress, mobile, SEO, and DevOps. One taste bar, one direct line, no hand-offs.",
     principlesEyebrow: "Principles",
     principlesTitle: "What I believe.",
     principles: [],
@@ -96,52 +95,11 @@ export default async function AboutPage() {
         </section>
       )}
 
-      {/* Team */}
-      {c.team.length > 0 && (
-        <section className="bg-background py-20 md:py-28 border-b border-border">
-          <div className="mx-auto max-w-7xl px-6">
-            <FadeIn>
-              <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                <span className="inline-block h-px w-8 bg-muted-foreground/60" />
-                {c.teamEyebrow}
-              </p>
-              <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl">
-                {c.teamTitle}
-              </h2>
-            </FadeIn>
+      {/* Expertise / Skills */}
+      <ExpertiseSection />
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-3xl border border-border bg-border">
-              {c.team.map((m, i) => (
-                <FadeIn key={m.name + i} delay={i * 0.05} className="bg-background">
-                  <div className="group flex flex-col items-center p-8 md:p-10">
-                    <div className="aspect-square w-full max-w-[220px] rounded-2xl bg-gradient-to-br from-muted via-muted/40 to-background overflow-hidden relative">
-                      {m.photo ? (
-                        <Image
-                          src={m.photo}
-                          alt={m.name}
-                          width={440}
-                          height={440}
-                          className="h-full w-full object-cover"
-                          unoptimized
-                        />
-                      ) : (
-                        <>
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,color-mix(in_oklch,var(--foreground)_25%,transparent),transparent_60%)] transition-opacity duration-500 group-hover:opacity-100 opacity-60" />
-                          <div className="absolute inset-0 flex items-center justify-center font-display text-7xl text-foreground/10">
-                            {m.name.split(" ")[0][0]}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                    <p className="mt-5 font-display text-xl tracking-tight">{m.name}</p>
-                    <p className="text-xs text-muted-foreground">{m.role}</p>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Experience */}
+      <ExperienceSection />
 
       <Stats stats={home?.stats} />
       <ClientMarquee
@@ -157,5 +115,146 @@ export default async function AboutPage() {
         contactEmail={settings?.contactEmail}
       />
     </>
+  );
+}
+
+// ----------------------------------------------------------------------------
+// Expertise — grouped skills
+
+const expertise = [
+  {
+    label: "Fullstack engineering",
+    skills: ["Next.js", "React", "TypeScript", "Node.js", "REST + GraphQL", "Postgres", "Prisma / Drizzle"],
+  },
+  {
+    label: "WordPress",
+    skills: ["Custom themes", "Custom plugins", "Headless WP", "WooCommerce", "ACF"],
+  },
+  {
+    label: "Mobile",
+    skills: ["Flutter", "Dart", "React Native", "App Store + Play Store"],
+  },
+  {
+    label: "Design",
+    skills: ["UI / UX", "Design systems", "Figma", "Brand identity", "Motion"],
+  },
+  {
+    label: "SEO",
+    skills: ["Technical audits", "On-page", "Schema", "Content strategy", "Core Web Vitals"],
+  },
+  {
+    label: "DevOps",
+    skills: ["Vercel", "AWS", "Docker", "CI / CD", "Linux", "Cloudflare"],
+  },
+];
+
+function ExpertiseSection() {
+  return (
+    <section className="bg-background py-20 md:py-28 border-b border-border">
+      <div className="mx-auto max-w-7xl px-6">
+        <FadeIn>
+          <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            <span className="inline-block h-px w-8 bg-muted-foreground/60" />
+            Expertise
+          </p>
+          <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl">
+            What I bring to every engagement.
+          </h2>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px overflow-hidden rounded-3xl border border-border bg-border">
+          {expertise.map((group, i) => (
+            <FadeIn key={group.label} delay={i * 0.06} className="bg-background">
+              <Spotlight className="rounded-none h-full">
+                <div className="p-8 md:p-10 h-full">
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-4 font-display text-2xl md:text-3xl tracking-tight">
+                    {group.label}
+                  </h3>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {group.skills.map((s) => (
+                      <span
+                        key={s}
+                        className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs text-muted-foreground"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Spotlight>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ----------------------------------------------------------------------------
+// Experience — career timeline
+
+const experience = [
+  {
+    year: "2024 — present",
+    title: "Founder · Pertech Studio",
+    body: "Solo design + engineering studio. Full ownership of every engagement — discovery, design, build, launch, growth.",
+  },
+  {
+    year: "2022 — 2024",
+    title: "Senior Engineer · independent",
+    body: "Full-stack client work across web and mobile. Took products from zero-to-one and rebuilt legacy systems for funded teams.",
+  },
+  {
+    year: "2020 — 2022",
+    title: "Software Engineer",
+    body: "Early career across agencies and product teams. Shipped marketing sites, internal tools, and the first generation of mobile apps.",
+  },
+  {
+    year: "2020",
+    title: "Certified Engineer",
+    body: "Completed engineering certification and began full-time professional software work.",
+  },
+];
+
+function ExperienceSection() {
+  return (
+    <section className="bg-background py-20 md:py-28 border-b border-border">
+      <div className="mx-auto max-w-7xl px-6">
+        <FadeIn>
+          <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            <span className="inline-block h-px w-8 bg-muted-foreground/60" />
+            Experience
+          </p>
+          <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl">
+            Five years, four chapters.
+          </h2>
+        </FadeIn>
+
+        <div className="space-y-px overflow-hidden rounded-3xl border border-border bg-border">
+          {experience.map((entry, i) => (
+            <FadeIn key={entry.year + i} delay={i * 0.07} className="bg-background">
+              <div className="group grid grid-cols-1 md:grid-cols-12 items-start gap-4 px-6 md:px-10 py-8 md:py-10 transition-colors hover:bg-accent/30">
+                <div className="md:col-span-3">
+                  <span className="font-mono text-xs text-muted-foreground">
+                    {entry.year}
+                  </span>
+                </div>
+                <div className="md:col-span-9">
+                  <h3 className="font-display text-2xl md:text-3xl tracking-tight">
+                    {entry.title}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-pretty text-base text-muted-foreground">
+                    {entry.body}
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
