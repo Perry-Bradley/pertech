@@ -7,9 +7,9 @@ import { FadeIn } from "@/components/animations/fade-in";
 type Stat = { value: number; suffix: string; label: string };
 
 const defaultStats: Stat[] = [
-  { value: 40, suffix: "+", label: "Products shipped" },
+  { value: 150, suffix: "+", label: "Clients served" },
   { value: 10, suffix: "M+", label: "Users reached" },
-  { value: 9, suffix: "yrs", label: "Engineering experience" },
+  { value: 5, suffix: "yrs", label: "Engineering experience" },
   { value: 100, suffix: "%", label: "Hands-on involvement" },
 ];
 

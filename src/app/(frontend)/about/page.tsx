@@ -37,8 +37,8 @@ export default async function AboutPage() {
   const c = content ?? {
     eyebrow: "Studio",
     title: "A solo studio with a high taste bar.",
-    description: "One person, end-to-end. A decade of shipped work behind it, and a belief that craft is not optional.",
-    intro: "Pertech is a one-person studio run by Perry Bradley. After years of shipping at agencies, the work that mattered most always came from small teams obsessed with the details. Pertech is that idea taken to its limit — one engineer, one designer, one direct line.",
+    description: "One person, end-to-end. Five years of shipped work behind it, and a belief that craft is not optional.",
+    intro: "Pertech is a one-person studio run by Perry Bradley — a software engineer based in Cameroon with five years of production work behind him. He builds across the stack: TypeScript for web (Next.js, React), Dart for mobile (Flutter), and Python for the machine-learning pieces in between. Past work spans healthcare platforms, identity & auth systems, applied ML for agriculture, and a steady stream of marketing sites for founders. Pertech is what happens when you trust one craftsman with the whole problem instead of stitching together five vendors.",
     principlesEyebrow: "Principles",
     principlesTitle: "What I believe.",
     principles: [],

@@ -7,7 +7,7 @@ import { ScrollRevealText } from "@/components/animations/scroll-reveal-text";
 
 export function AboutStrip({
   eyebrow = "About the studio",
-  body = "Pertech is a solo studio run by Perry Bradley. A decade of quietly shipping products you've probably used, now distilled into a single point of contact and a single high taste bar.",
+  body = "Pertech is a solo studio run by Perry Bradley. Five years of quietly shipping products you've probably used, now distilled into a single point of contact and a single high taste bar.",
 }: {
   eyebrow?: string;
   body?: string;

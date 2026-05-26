@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-const defaultBudgets = ["< $25k", "$25k – $75k", "$75k – $150k", "$150k +"];
 const defaultServices = [
   "Design",
   "SEO",
@@ -48,19 +47,20 @@ const pill: Variants = {
 
 export function ContactForm({
   serviceOptions = defaultServices,
-  budgetOptions = defaultBudgets,
+  // budgetOptions kept in the prop API for backward compatibility, but
+  // we no longer render budget pills — clients type their budget freely.
+  budgetOptions: _budgetOptions,
   submitLabel = "Send inquiry",
-  footerNote = "We reply within one business day.",
+  footerNote = "I reply within one business day.",
 }: {
   serviceOptions?: string[];
   budgetOptions?: string[];
   submitLabel?: string;
   footerNote?: string;
 }) {
+  void _budgetOptions;
   const services = serviceOptions.length > 0 ? serviceOptions : defaultServices;
-  const budgets = budgetOptions.length > 0 ? budgetOptions : defaultBudgets;
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [budget, setBudget] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
 
   const toggleService = (s: string) =>
@@ -137,33 +137,13 @@ export function ContactForm({
         </motion.div>
       </motion.div>
 
-      <motion.div variants={item}>
-        <Label className="mb-3 block">Project budget</Label>
-        <motion.div
-          className="flex flex-wrap gap-2"
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.05 } },
-          }}
-        >
-          {budgets.map((b) => (
-            <motion.button
-              variants={pill}
-              key={b}
-              type="button"
-              onClick={() => setBudget(b)}
-              whileTap={{ scale: 0.95 }}
-              className={cn(
-                "rounded-full border border-border px-4 py-2 text-sm transition-colors",
-                budget === b
-                  ? "bg-foreground text-background border-foreground"
-                  : "bg-background/40 hover:bg-accent"
-              )}
-            >
-              {b}
-            </motion.button>
-          ))}
-        </motion.div>
+      <motion.div variants={item} className="space-y-2">
+        <Label htmlFor="budget">Project budget</Label>
+        <Input
+          id="budget"
+          name="budget"
+          placeholder="e.g. $15,000 — or a range, or 'flexible'"
+        />
       </motion.div>
 
       <motion.div variants={item} className="space-y-2">
