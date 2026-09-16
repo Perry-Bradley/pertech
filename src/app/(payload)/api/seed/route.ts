@@ -148,10 +148,10 @@ export async function GET(req: NextRequest) {
       where: { slug: { equals: p.slug } },
       limit: 1,
     });
-    const coverId = await resolveLocalImageToMediaId(payload, p.cover, `${p.title} — cover`);
+    const coverId = await resolveLocalImageToMediaId(payload, p.cover, `${p.title} cover`);
     const galleryIds = (
       await Promise.all(
-        p.gallery.map((g) => resolveLocalImageToMediaId(payload, g, `${p.title} — gallery`))
+        p.gallery.map((g) => resolveLocalImageToMediaId(payload, g, `${p.title} gallery image`))
       )
     ).filter((id): id is number => Boolean(id));
     const data = {
@@ -193,7 +193,7 @@ export async function GET(req: NextRequest) {
         tagline: "Digital Studio for Ambitious Brands",
         contactEmail: "hello@pertech.studio",
         availability: "Available · Q3 2026",
-        defaultTitle: "Pertech — Digital Studio for Ambitious Brands",
+        defaultTitle: "Pertech: Digital Studio for Ambitious Brands",
         titleTemplate: "%s | Pertech",
         defaultDescription:
           "Pertech is a design & engineering studio crafting premium websites, web apps, mobile apps, brand identities, and growth-led SEO.",
@@ -223,7 +223,7 @@ export async function GET(req: NextRequest) {
       { text: "Ship.", italic: false },
     ],
     heroDescription:
-      "Pertech is a solo design and engineering studio for brands that refuse to look generic. One person, end-to-end — websites, products, mobile apps, and growth systems built the way they should have been the first time.",
+      "Pertech is a solo design and engineering studio for brands that refuse to look generic. One person, end-to-end: websites, products, mobile apps, and growth systems built the way they should have been the first time.",
     heroPrimaryCTA: { label: "Start a project", href: "/contact" },
     heroSecondaryCTA: { label: "See the work", href: "/portfolio" },
     marqueeEyebrow: "Trusted by founders, operators, and creative directors",
@@ -246,12 +246,12 @@ export async function GET(req: NextRequest) {
     processTitleLineOne: "A studio process,",
     processTitleLineTwo: "not an agency one.",
     processDescription:
-      "I collaborate the way the best in-house engineers do — with high context, weekly working sessions, and shared definitions of done. One person, one direct line.",
+      "I collaborate the way the best in-house engineers do: with high context, weekly working sessions, and shared definitions of done. One person, one direct line.",
     processSteps: [
       { step: "01", title: "Listen", body: "We spend the first week asking better questions than the brief. Stakeholder interviews, jobs-to-be-done, hard tradeoffs surfaced early." },
       { step: "02", title: "Frame",  body: "A creative or technical direction backed by reasoning you can defend to your board. Two or three options, not twenty." },
       { step: "03", title: "Make",   body: "Two-week sprints, weekly working sessions, real artifacts every Friday. No 6-week silent stretches." },
-      { step: "04", title: "Ship",   body: "Launch, measure, iterate. We don't disappear at handoff — we stay long enough for real users to inform the next move." },
+      { step: "04", title: "Ship",   body: "Launch, measure, iterate. We don't disappear at handoff. We stay long enough for real users to inform the next move." },
     ],
     stats: [
       { value: 40,  suffix: "+",   label: "Products shipped" },
@@ -280,12 +280,12 @@ export async function GET(req: NextRequest) {
     eyebrow: "Studio",
     title: "A solo studio with a high taste bar.",
     description: "One person, end-to-end. A decade of shipped work behind it, and a belief that craft is not optional.",
-    intro: "Pertech is a one-person studio run by Perry Bradley. After years of shipping at agencies, the work that mattered most always came from small teams obsessed with the details. Pertech is that idea taken to its limit — one engineer, one designer, one direct line.",
+    intro: "Pertech is a one-person studio run by Perry Bradley. After years of shipping at agencies, the work that mattered most always came from small teams obsessed with the details. Pertech is that idea taken to its limit: one engineer, one designer, one direct line.",
     principlesEyebrow: "Principles",
     principlesTitle: "What I believe.",
     principles: [
       { number: "01", title: "No middlemen", body: "You talk to the person doing the work. Every call, every PR, every Friday demo. No account managers, no junior hand-offs." },
-      { number: "02", title: "Show the work, weekly", body: "Real artifacts every Friday. No surprises. No black-box stretches. You see how the sausage is made — that's a feature." },
+      { number: "02", title: "Show the work, weekly", body: "Real artifacts every Friday. No surprises. No black-box stretches. You see how the sausage is made. That's a feature." },
       { number: "03", title: "Taste and rigor", body: "Beautiful work that survives load testing, accessibility audits, and your CFO's questions. Craft and discipline aren't opposites." },
       { number: "04", title: "Honest tradeoffs", body: "I say no when I should. I push back when it matters. Trust compounds; flattery is short-term." },
     ],
@@ -302,7 +302,7 @@ export async function GET(req: NextRequest) {
   await seedPageGlobal(payload, "contact-page", () => ({
     eyebrow: "Contact",
     title: "Let's talk.",
-    description: "A real human reads every inquiry. Tell us about your project — we'll come back within one business day.",
+    description: "A real human reads every inquiry. Tell us about your project, and we'll come back within one business day.",
     newBusinessEmail: "new@pertech.studio",
     studioBlurb: "Remote-first.\nHubs in Lisbon, New York, Singapore.",
     pressEmail: "press@pertech.studio",
@@ -321,7 +321,7 @@ export async function GET(req: NextRequest) {
   await seedPageGlobal(payload, "portfolio-index-page", () => ({
     eyebrow: "Work",
     title: "Selected case studies.",
-    description: "A handful of recent engagements we're proud to put our name on. More available on request — some work lives behind NDAs.",
+    description: "A handful of recent engagements we're proud to put our name on. More available on request, since some work lives behind NDAs.",
   }), log);
 
   return NextResponse.json({

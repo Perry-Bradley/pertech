@@ -70,8 +70,12 @@ export function Process({
               transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
               className={`relative ${i % 2 === 1 ? "md:mt-32" : ""}`}
             >
-              <div className="md:absolute md:-left-[42px] md:top-2 mb-6 md:mb-0">
-                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background">
+              <div
+                className={`md:absolute md:top-2 mb-6 md:mb-0 ${
+                  i % 2 === 0 ? "md:-right-[44px]" : "md:-left-[44px]"
+                }`}
+              >
+                <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background shadow-[0_0_0_4px_var(--background)]">
                   <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
                 </span>
               </div>
