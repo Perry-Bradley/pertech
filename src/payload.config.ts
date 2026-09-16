@@ -26,7 +26,12 @@ const databaseUri = process.env.DATABASE_URI || "file:./pertech.db";
 const isPostgres =
   databaseUri.startsWith("postgres://") || databaseUri.startsWith("postgresql://");
 
-const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
+// BLOB2_* was created alongside a fresh public Vercel Blob store after the
+// original BLOB_* connection turned out to point at a private store (which
+// this plugin can't use — it only ever requests public-access uploads).
+// Prefer the new public store's token; fall back to the old name in case
+// this ever runs somewhere that still only has that one set.
+const blobToken = process.env.BLOB2_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN;
 const useBlobStorage = !!blobToken;
 
 export default buildConfig({
