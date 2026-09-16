@@ -226,6 +226,84 @@ export const projects: Project[] = [
     ],
     link: { label: "halo.ai", url: "#" },
   },
+  {
+    slug: "meridian-digital",
+    title: "Meridian Digital",
+    client: "Meridian Digital",
+    year: "2026",
+    category: "Website",
+    services: ["Design", "Website Development"],
+    summary:
+      "A fast-turnaround brand site for a digital agency that needed to look credible before their next pitch, not after.",
+    description:
+      "Meridian came to us needing a site that read as established immediately — clean hero, clear services, real motion — without the multi-week timeline a full custom build usually takes. We delivered the whole thing, front to back, in a single sitting.",
+    challenge:
+      "A founder-led agency with strong positioning but no site to back it up ahead of a run of new-business pitches.",
+    approach:
+      "Built on WordPress and Elementor for speed, then hand-tuned every section — hero, services, content — around Meridian's actual copy and brand color instead of leaving it generic.",
+    outcome:
+      "Live and pitch-ready the same day it was started, with a homepage that reads considered rather than templated.",
+    cover: "/case-studies/agency-template-cover.png",
+    thumbnail: "/case-studies/agency-template-cover.png",
+    gallery: ["/case-studies/agency-template-full.png"],
+    metrics: [
+      { label: "Time to launch", value: "1 day" },
+      { label: "Pages delivered", value: "4" },
+      { label: "Revisions to sign-off", value: "1" },
+    ],
+  },
+  {
+    slug: "ember-and-oak",
+    title: "Ember & Oak",
+    client: "Ember & Oak",
+    year: "2026",
+    category: "Website",
+    services: ["Design", "Website Development"],
+    summary:
+      "A reservation-first site for a neighborhood restaurant, built around the menu and the table booking, not a design exercise.",
+    description:
+      "Ember & Oak needed a site that sold the food and made booking a table effortless. We built full-bleed photography, a real menu structure, and a reservation flow that's never more than one click from any page.",
+    challenge:
+      "A restaurant with strong word-of-mouth but no way for new guests to see the menu or book online.",
+    approach:
+      "Built the site on WordPress and Elementor, structuring it around a hero slider, menu, gallery, and a reservation CTA repeated at every natural exit point.",
+    outcome:
+      "Online bookings became a live channel from week one instead of phone-only reservations.",
+    cover: "/case-studies/restaurant-template-cover.png",
+    thumbnail: "/case-studies/restaurant-template-cover.png",
+    gallery: ["/case-studies/restaurant-template-full.png"],
+    metrics: [
+      { label: "Time to launch", value: "1 day" },
+      { label: "Booking flow", value: "1-click" },
+      { label: "Menu updates", value: "Self-serve" },
+    ],
+  },
+  {
+    slug: "harborview-realty",
+    title: "Harborview Realty",
+    client: "Harborview Realty",
+    year: "2026",
+    category: "Website",
+    services: ["Design", "Website Development"],
+    summary:
+      "A trust-first site for an independent real estate consultant, built to read as established from the first scroll.",
+    description:
+      "Solo and small real-estate practices live or die on trust signals. We gave Harborview a confident hero, a clear services breakdown, and reviews front and center, with a booking CTA that's always in view.",
+    challenge:
+      "An independent consultant competing against larger agencies with a site that undersold their experience.",
+    approach:
+      "Built on WordPress and Elementor around a services / about / reviews / booking structure, tuned to feel established rather than templated.",
+    outcome:
+      "A site the client could confidently send to new leads on day one, with listings and branding easy to swap in as they grow.",
+    cover: "/case-studies/realestate-template-cover.png",
+    thumbnail: "/case-studies/realestate-template-cover.png",
+    gallery: ["/case-studies/realestate-template-full.png"],
+    metrics: [
+      { label: "Time to launch", value: "1 day" },
+      { label: "Core sections", value: "4" },
+      { label: "Booking CTA", value: "Always in view" },
+    ],
+  },
 ];
 
 export function getProject(slug: string): Project | undefined {

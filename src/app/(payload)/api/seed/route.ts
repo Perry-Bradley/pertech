@@ -1,8 +1,51 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPayload } from "payload";
+import fs from "fs/promises";
+import path from "path";
 import config from "@payload-config";
 import { services as seedServices } from "@/lib/services";
 import { projects as seedProjects } from "@/lib/projects";
+
+/**
+ * Local /public image paths (e.g. "/case-studies/foo.png") aren't valid
+ * Payload `upload` relations. Resolve one to a media doc ID, creating it
+ * from the file on disk the first time and reusing it on later seed runs.
+ */
+async function resolveLocalImageToMediaId(
+  payload: Awaited<ReturnType<typeof getPayload>>,
+  publicPath: string,
+  altText: string
+): Promise<number | undefined> {
+  if (!publicPath.startsWith("/")) return undefined; // skip data: URIs etc.
+
+  const filename = path.basename(publicPath);
+  const existing = await payload.find({
+    collection: "media",
+    where: { filename: { equals: filename } },
+    limit: 1,
+  });
+  if (existing.docs[0]) return Number(existing.docs[0].id);
+
+  const absPath = path.join(process.cwd(), "public", publicPath);
+  let data: Buffer;
+  try {
+    data = await fs.readFile(absPath);
+  } catch {
+    return undefined; // file not present in this deployment, skip quietly
+  }
+
+  const created = await payload.create({
+    collection: "media",
+    data: { alt: altText },
+    file: {
+      data,
+      mimetype: filename.endsWith(".png") ? "image/png" : "image/jpeg",
+      name: filename,
+      size: data.byteLength,
+    },
+  });
+  return Number(created.id);
+}
 
 const adminEmail = process.env.SEED_ADMIN_EMAIL || "admin@pertech.local";
 const adminPassword = process.env.SEED_ADMIN_PASSWORD || "ChangeMe123!";
@@ -105,6 +148,12 @@ export async function GET(req: NextRequest) {
       where: { slug: { equals: p.slug } },
       limit: 1,
     });
+    const coverId = await resolveLocalImageToMediaId(payload, p.cover, `${p.title} — cover`);
+    const galleryIds = (
+      await Promise.all(
+        p.gallery.map((g) => resolveLocalImageToMediaId(payload, g, `${p.title} — gallery`))
+      )
+    ).filter((id): id is number => Boolean(id));
     const data = {
       slug: p.slug,
       order: i++,
@@ -120,6 +169,8 @@ export async function GET(req: NextRequest) {
       outcome: p.outcome,
       metrics: p.metrics.map((m) => ({ label: m.label, value: m.value })),
       link: p.link ? { label: p.link.label, url: p.link.url } : undefined,
+      ...(coverId ? { cover: coverId } : {}),
+      ...(galleryIds.length ? { gallery: galleryIds.map((id) => ({ image: id })) } : {}),
     };
     if (existing.docs[0]) {
       await payload.update({ collection: "projects", id: existing.docs[0].id, data });
