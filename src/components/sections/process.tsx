@@ -10,14 +10,14 @@ const defaultSteps: Step[] = [
   { step: "01", title: "Listen", body: "We spend the first week asking better questions than the brief. Stakeholder interviews, jobs-to-be-done, hard tradeoffs surfaced early." },
   { step: "02", title: "Frame",  body: "A creative or technical direction backed by reasoning you can defend to your board. Two or three options, not twenty." },
   { step: "03", title: "Make",   body: "Two-week sprints, weekly working sessions, real artifacts every Friday. No 6-week silent stretches." },
-  { step: "04", title: "Ship",   body: "Launch, measure, iterate. We don't disappear at handoff — we stay long enough for real users to inform the next move." },
+  { step: "04", title: "Ship",   body: "Launch, measure, iterate. We don't disappear at handoff. We stay long enough for real users to inform the next move." },
 ];
 
 export function Process({
   eyebrow = "How I work",
   titleLineOne = "A studio process,",
   titleLineTwo = "not an agency one.",
-  description = "I collaborate the way the best in-house engineers do — with high context, weekly working sessions, and shared definitions of done. One person, one direct line.",
+  description = "I collaborate the way the best in-house engineers do: with high context, weekly working sessions, and shared definitions of done. One person, one direct line.",
   steps = defaultSteps,
 }: {
   eyebrow?: string;

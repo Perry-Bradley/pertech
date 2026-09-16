@@ -142,7 +142,7 @@ export function ContactForm({
         <Input
           id="budget"
           name="budget"
-          placeholder="e.g. $15,000 — or a range, or 'flexible'"
+          placeholder="e.g. $15,000, or a range, or 'flexible'"
         />
       </motion.div>
 

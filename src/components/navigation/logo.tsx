@@ -78,7 +78,7 @@ export function Logo({
   return (
     <Link
       href="/"
-      aria-label="Pertech — home"
+      aria-label="Pertech home"
       className={cn(
         "group/logo inline-flex items-center gap-2.5 font-medium tracking-tight",
         className

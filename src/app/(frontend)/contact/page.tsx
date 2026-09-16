@@ -33,7 +33,7 @@ export default async function ContactPage() {
   const c = content ?? {
     eyebrow: "Contact",
     title: "Let's talk.",
-    description: "A real human reads every inquiry. Tell us about your project — we'll come back within one business day.",
+    description: "A real human reads every inquiry. Tell us about your project, and we'll come back within one business day.",
     newBusinessEmail: "new@pertech.studio",
     studioBlurb: "Remote-first.\nHubs in Lisbon, New York, Singapore.",
     pressEmail: "press@pertech.studio",

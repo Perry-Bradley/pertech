@@ -17,7 +17,7 @@ export const PortfolioIndexPage: GlobalConfig = {
       name: "description",
       type: "textarea",
       defaultValue:
-        "A handful of recent engagements we're proud to put our name on. More available on request — some work lives behind NDAs.",
+        "A handful of recent engagements we're proud to put our name on. More available on request, since some work lives behind NDAs.",
     },
   ],
 };

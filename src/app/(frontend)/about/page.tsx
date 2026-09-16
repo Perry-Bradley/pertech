@@ -37,7 +37,7 @@ export default async function AboutPage() {
     eyebrow: "Studio",
     title: "A solo studio with a high taste bar.",
     description: "One person, end-to-end. Five years of shipped work behind it, and a belief that craft is not optional.",
-    intro: "Pertech is a one-person studio run by Perry Bradley — a certified fullstack engineer, designer, and SEO specialist based in Cameroon. Five years across the disciplines that actually ship a product: design, fullstack web, WordPress, mobile, SEO, and DevOps. One taste bar, one direct line, no hand-offs.",
+    intro: "Pertech is a one-person studio run by Perry Bradley, a certified fullstack engineer, designer, and SEO specialist based in Cameroon. Five years across the disciplines that actually ship a product: design, fullstack web, WordPress, mobile, SEO, and DevOps. One taste bar, one direct line, no hand-offs.",
     principlesEyebrow: "Principles",
     principlesTitle: "What I believe.",
     principles: [],
@@ -198,17 +198,17 @@ function ExpertiseSection() {
 
 const experience = [
   {
-    year: "2024 — present",
+    year: "2024 to present",
     title: "Founder · Pertech Studio",
-    body: "Solo design + engineering studio. Full ownership of every engagement — discovery, design, build, launch, growth.",
+    body: "Solo design + engineering studio. Full ownership of every engagement: discovery, design, build, launch, growth.",
   },
   {
-    year: "2022 — 2024",
+    year: "2022 to 2024",
     title: "Senior Engineer · independent",
     body: "Full-stack client work across web and mobile. Took products from zero-to-one and rebuilt legacy systems for funded teams.",
   },
   {
-    year: "2020 — 2022",
+    year: "2020 to 2022",
     title: "Software Engineer",
     body: "Early career across agencies and product teams. Shipped marketing sites, internal tools, and the first generation of mobile apps.",
   },

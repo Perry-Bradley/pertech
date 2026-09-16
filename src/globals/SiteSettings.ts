@@ -44,7 +44,7 @@ export const SiteSettings: GlobalConfig = {
               name: "defaultTitle",
               type: "text",
               required: true,
-              defaultValue: "Pertech — Digital Studio for Ambitious Brands",
+              defaultValue: "Pertech: Digital Studio for Ambitious Brands",
             },
             {
               name: "titleTemplate",

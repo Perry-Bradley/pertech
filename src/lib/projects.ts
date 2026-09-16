@@ -50,7 +50,7 @@ export const projects: Project[] = [
     summary:
       "Redesigning a wealth platform for the next generation of investors.",
     description:
-      "Luma asked us to take their legacy wealth-management platform and rebuild it for an audience that grew up on apps, not bank statements. We rebuilt the product end-to-end — from brand to onboarding to the trading interface.",
+      "Luma asked us to take their legacy wealth-management platform and rebuild it for an audience that grew up on apps, not bank statements. We rebuilt the product end-to-end, from brand to onboarding to the trading interface.",
     challenge:
       "A 12-year-old codebase with a confusing IA, brutal load times, and a brand that read more 'bank' than 'product'. New users were churning in onboarding.",
     approach:
@@ -174,7 +174,7 @@ export const projects: Project[] = [
     summary:
       "A quietly luxurious storefront for a Tokyo-based menswear label.",
     description:
-      "Vela's previous storefront looked like every Shopify template. We rebuilt it as a slow, deliberate, photography-driven experience — and the conversion rate doubled.",
+      "Vela's previous storefront looked like every Shopify template. We rebuilt it as a slow, deliberate, photography-driven experience, and the conversion rate doubled.",
     challenge:
       "Premium price point, premium product, and a digital store that didn't reflect either.",
     approach:
@@ -236,11 +236,11 @@ export const projects: Project[] = [
     summary:
       "A fast-turnaround brand site for a digital agency that needed to look credible before their next pitch, not after.",
     description:
-      "Meridian came to us needing a site that read as established immediately — clean hero, clear services, real motion — without the multi-week timeline a full custom build usually takes. We delivered the whole thing, front to back, in a single sitting.",
+      "Meridian came to us needing a site that read as established immediately: clean hero, clear services, real motion, without the multi-week timeline a full custom build usually takes. We delivered the whole thing, front to back, in a single sitting.",
     challenge:
       "A founder-led agency with strong positioning but no site to back it up ahead of a run of new-business pitches.",
     approach:
-      "Built on WordPress and Elementor for speed, then hand-tuned every section — hero, services, content — around Meridian's actual copy and brand color instead of leaving it generic.",
+      "Built on WordPress and Elementor for speed, then hand-tuned every section (hero, services, content) around Meridian's actual copy and brand color instead of leaving it generic.",
     outcome:
       "Live and pitch-ready the same day it was started, with a homepage that reads considered rather than templated.",
     cover: "/case-studies/agency-template-cover.png",

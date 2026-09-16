@@ -31,14 +31,14 @@ export const services: Service[] = [
     short: "Brand & product design",
     tagline: "Identity systems and product UI built for distinction.",
     description:
-      "We craft visual languages and interfaces that feel inevitable — typography, motion, color, and detail tuned until every pixel earns its place. From a fresh identity to a complete design system, we partner with founders and product teams to ship work that looks decades ahead of the competition.",
+      "We craft visual languages and interfaces that feel inevitable: typography, motion, color, and detail tuned until every pixel earns its place. From a fresh identity to a complete design system, we partner with founders and product teams to ship work that looks decades ahead of the competition.",
     icon: Palette,
     number: "01",
     features: [
       {
         title: "Brand identity systems",
         description:
-          "Logos, marks, typography, color, voice, and motion principles — a complete visual operating system.",
+          "Logos, marks, typography, color, voice, and motion principles, forming a complete visual operating system.",
       },
       {
         title: "Product & UI design",
@@ -53,7 +53,7 @@ export const services: Service[] = [
       {
         title: "Motion & micro-interactions",
         description:
-          "Movement that guides attention and adds personality — never decoration for its own sake.",
+          "Movement that guides attention and adds personality, never decoration for its own sake.",
       },
     ],
     deliverables: [
@@ -87,7 +87,7 @@ export const services: Service[] = [
         step: "04",
         title: "Deliver",
         description:
-          "Tokens, components, and guidelines handed off — plus office hours while your team rolls it out.",
+          "Tokens, components, and guidelines handed off, plus office hours while your team rolls it out.",
       },
     ],
     faqs: [
@@ -97,7 +97,7 @@ export const services: Service[] = [
       },
       {
         q: "Do you work with in-house design teams?",
-        a: "Yes. Many of our engagements are with companies that already have designers — we drop in as a senior force multiplier.",
+        a: "Yes. Many of our engagements are with companies that already have designers. We drop in as a senior force multiplier.",
       },
       {
         q: "Can we just hire you for a single screen?",
@@ -117,14 +117,14 @@ export const services: Service[] = [
     short: "Growth-led SEO",
     tagline: "Compounding organic traffic, engineered.",
     description:
-      "Most SEO is content theater. Ours is a measured engineering discipline — technical audits, intent-mapped content systems, and on-page craft that move ranked keywords from page three to position one. We focus on revenue-adjacent terms, not vanity volume.",
+      "Most SEO is content theater. Ours is a measured engineering discipline: technical audits, intent-mapped content systems, and on-page craft that move ranked keywords from page three to position one. We focus on revenue-adjacent terms, not vanity volume.",
     icon: Search,
     number: "02",
     features: [
       {
         title: "Technical SEO audits",
         description:
-          "Core Web Vitals, crawl budget, indexation, schema, internal linking — the full forensic report.",
+          "Core Web Vitals, crawl budget, indexation, schema, internal linking: the full forensic report.",
       },
       {
         title: "Keyword & intent mapping",
@@ -134,7 +134,7 @@ export const services: Service[] = [
       {
         title: "Programmatic & content SEO",
         description:
-          "From editorial pieces to programmatic templates — scalable systems for sites that need to grow fast.",
+          "From editorial pieces to programmatic templates, scalable systems for sites that need to grow fast.",
       },
       {
         title: "Authority building",
@@ -167,7 +167,7 @@ export const services: Service[] = [
         step: "03",
         title: "Execute",
         description:
-          "Implementation across engineering, content, and outreach — driven by us, reviewed weekly with you.",
+          "Implementation across engineering, content, and outreach, driven by us and reviewed weekly with you.",
       },
       {
         step: "04",
@@ -183,7 +183,7 @@ export const services: Service[] = [
       },
       {
         q: "Do you do link building?",
-        a: "Yes — through digital PR, partnerships, and earned media. We don't do link farms or anything that puts your domain at risk.",
+        a: "Yes, through digital PR, partnerships, and earned media. We don't do link farms or anything that puts your domain at risk.",
       },
       {
         q: "Can you guarantee #1 rankings?",
@@ -203,7 +203,7 @@ export const services: Service[] = [
     short: "Marketing sites that convert",
     tagline: "Fast, accessible, beautiful marketing sites.",
     description:
-      "Marketing websites that load in under a second, look unmistakably premium, and convert. We build on Next.js, Astro, or your CMS of choice — engineered for editor friendliness, search engines, and a perfect Lighthouse score.",
+      "Marketing websites that load in under a second, look unmistakably premium, and convert. We build on Next.js, Astro, or your CMS of choice, engineered for editor friendliness, search engines, and a perfect Lighthouse score.",
     icon: Globe,
     number: "03",
     features: [
@@ -215,7 +215,7 @@ export const services: Service[] = [
       {
         title: "Performance-first builds",
         description:
-          "Sub-second LCP, perfect CWV scores, edge rendering — speed is a feature we ship by default.",
+          "Sub-second LCP, perfect CWV scores, edge rendering: speed is a feature we ship by default.",
       },
       {
         title: "Accessibility & i18n",
@@ -273,7 +273,7 @@ export const services: Service[] = [
       },
       {
         q: "Can you work with our brand?",
-        a: "Absolutely. We can lean on your existing brand or evolve it — both are normal starting points.",
+        a: "Absolutely. We can lean on your existing brand or evolve it. Both are normal starting points.",
       },
     ],
     tools: ["Next.js", "Astro", "Sanity", "Payload", "Vercel", "Cloudflare"],
@@ -296,12 +296,12 @@ export const services: Service[] = [
       {
         title: "Full-stack TypeScript",
         description:
-          "Next.js, tRPC or GraphQL, Prisma/Drizzle — one language, end-to-end type safety, zero context switching.",
+          "Next.js, tRPC or GraphQL, Prisma/Drizzle: one language, end-to-end type safety, zero context switching.",
       },
       {
         title: "Auth, billing, multi-tenancy",
         description:
-          "The hard parts done right the first time. Stripe, organizations, RBAC, audit logs — all sane defaults.",
+          "The hard parts done right the first time. Stripe, organizations, RBAC, audit logs: all sane defaults.",
       },
       {
         title: "Observability built-in",
@@ -311,7 +311,7 @@ export const services: Service[] = [
       {
         title: "AI features that ship",
         description:
-          "Streaming, tool use, RAG, evals — modern AI patterns implemented with the same rigor as the rest of your stack.",
+          "Streaming, tool use, RAG, evals: modern AI patterns implemented with the same rigor as the rest of your stack.",
       },
     ],
     deliverables: [
@@ -327,7 +327,7 @@ export const services: Service[] = [
         step: "01",
         title: "Define",
         description:
-          "Product discovery, user flows, data model — alignment before code is the cheapest insurance you can buy.",
+          "Product discovery, user flows, data model: alignment before code is the cheapest insurance you can buy.",
       },
       {
         step: "02",
@@ -355,7 +355,7 @@ export const services: Service[] = [
       },
       {
         q: "What about AI features?",
-        a: "We've shipped production AI features (RAG, agents, evals) for both startups and enterprise. We treat AI like any other system — observable, tested, and grounded in real user value.",
+        a: "We've shipped production AI features (RAG, agents, evals) for both startups and enterprise. We treat AI like any other system: observable, tested, and grounded in real user value.",
       },
       {
         q: "Who owns the code?",
@@ -375,7 +375,7 @@ export const services: Service[] = [
     short: "iOS & Android apps",
     tagline: "Native-quality apps, one codebase.",
     description:
-      "Cross-platform mobile applications built with React Native and Expo — fast enough to feel native, productive enough to ship in months instead of years. Or fully native when the use case demands it.",
+      "Cross-platform mobile applications built with React Native and Expo, fast enough to feel native and productive enough to ship in months instead of years. Or fully native when the use case demands it.",
     icon: Smartphone,
     number: "05",
     features: [
@@ -387,7 +387,7 @@ export const services: Service[] = [
       {
         title: "Native modules when needed",
         description:
-          "Camera, BLE, payments, AR — we'll drop into Swift or Kotlin when the platform demands it.",
+          "Camera, BLE, payments, AR: we'll drop into Swift or Kotlin when the platform demands it.",
       },
       {
         title: "Offline-first sync",
@@ -419,7 +419,7 @@ export const services: Service[] = [
         step: "02",
         title: "Design",
         description:
-          "Native UI patterns per platform — iOS and Android users get apps that feel right at home.",
+          "Native UI patterns per platform, so iOS and Android users get apps that feel right at home.",
       },
       {
         step: "03",
@@ -437,11 +437,11 @@ export const services: Service[] = [
     faqs: [
       {
         q: "React Native or fully native?",
-        a: "React Native + Expo for 95% of products — it's faster, cheaper, and indistinguishable for users. Fully native when the use case justifies it.",
+        a: "React Native + Expo for 95% of products. It's faster, cheaper, and indistinguishable for users. Fully native when the use case justifies it.",
       },
       {
         q: "Do you handle App Store submission?",
-        a: "Yes — including reviewer responses and rejection appeals. We've shipped 40+ apps; the playbook is well-worn.",
+        a: "Yes, including reviewer responses and rejection appeals. We've shipped 40+ apps; the playbook is well-worn.",
       },
       {
         q: "Can you build a backend too?",
@@ -461,7 +461,7 @@ export const services: Service[] = [
     short: "SMM & content systems",
     tagline: "Brand-led social that compounds, not posts that vanish.",
     description:
-      "We run social media the way we run product: with a strategy, a system, and a feedback loop. Brand-consistent content, daily community management, and creative that actually earns the algorithm — built around your audience and your category, not generic playbooks.",
+      "We run social media the way we run product: with a strategy, a system, and a feedback loop. Brand-consistent content, daily community management, and creative that actually earns the algorithm, built around your audience and your category, not generic playbooks.",
     icon: Share2,
     number: "06",
     features: [
@@ -473,7 +473,7 @@ export const services: Service[] = [
       {
         title: "Creative production",
         description:
-          "Static, motion, and short-form video produced in-house — designed for retention, not just impressions.",
+          "Static, motion, and short-form video produced in-house, designed for retention, not just impressions.",
       },
       {
         title: "Community management",
@@ -505,13 +505,13 @@ export const services: Service[] = [
         step: "02",
         title: "Plan",
         description:
-          "A content calendar, channel mix, and quarterly bets — with KPIs that ladder up to actual business outcomes.",
+          "A content calendar, channel mix, and quarterly bets, with KPIs that ladder up to actual business outcomes.",
       },
       {
         step: "03",
         title: "Produce",
         description:
-          "Monthly creative sprints. Static, video, motion — all in the brand system, all reviewed before it ships.",
+          "Monthly creative sprints. Static, video, motion, all in the brand system and all reviewed before it ships.",
       },
       {
         step: "04",
@@ -523,11 +523,11 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Which platforms do you cover?",
-        a: "Instagram, TikTok, LinkedIn, X, YouTube Shorts, and Threads — typically a focused mix of 2–3 per client based on where your audience actually lives.",
+        a: "Instagram, TikTok, LinkedIn, X, YouTube Shorts, and Threads, typically a focused mix of 2–3 per client based on where your audience actually lives.",
       },
       {
         q: "Do you produce video?",
-        a: "Yes — short-form vertical video is the bulk of what we make. Editing, motion, captions, hooks, sound design — all in-house.",
+        a: "Yes, short-form vertical video is the bulk of what we make. Editing, motion, captions, hooks, sound design, all in-house.",
       },
       {
         q: "Can you work with our existing brand?",

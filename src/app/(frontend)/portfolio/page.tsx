@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
     pageSeo,
     fallbackTitle: "Work",
     fallbackDescription:
-      "Selected case studies from Pertech — websites, web apps, mobile apps, identities, and growth.",
+      "Selected case studies from Pertech: websites, web apps, mobile apps, identities, and growth.",
   });
 }
 
@@ -32,7 +32,7 @@ export default async function PortfolioPage() {
       eyebrow: "Work",
       title: "Selected case studies.",
       description:
-        "A handful of recent engagements we're proud to put our name on. More available on request — some work lives behind NDAs.",
+        "A handful of recent engagements we're proud to put our name on. More available on request, since some work lives behind NDAs.",
     })),
   ]);
   return (

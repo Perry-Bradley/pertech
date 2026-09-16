@@ -18,7 +18,7 @@ export const ContactPage: GlobalConfig = {
               name: "description",
               type: "textarea",
               defaultValue:
-                "A real human reads every inquiry. Tell us about your project — we'll come back within one business day.",
+                "A real human reads every inquiry. Tell us about your project, and we'll come back within one business day.",
             },
           ],
         },

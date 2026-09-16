@@ -143,7 +143,7 @@ export const HomePage: GlobalConfig = {
               name: "processDescription",
               type: "textarea",
               defaultValue:
-                "We collaborate the way the best in-house teams do — with high context, weekly working sessions, and shared definitions of done.",
+                "We collaborate the way the best in-house teams do: with high context, weekly working sessions, and shared definitions of done.",
             },
             {
               name: "processSteps",

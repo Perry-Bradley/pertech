@@ -301,7 +301,7 @@ const defaultSiteSettings: SiteSettingsDTO = {
   tagline: "Digital Studio for Ambitious Brands",
   contactEmail: "hello@pertech.studio",
   availability: "Available · Q3 2026",
-  defaultTitle: "Pertech — Digital Studio for Ambitious Brands",
+  defaultTitle: "Pertech: Digital Studio for Ambitious Brands",
   titleTemplate: "%s | Pertech",
   defaultDescription:
     "Pertech is a design & engineering studio crafting premium digital products.",
@@ -537,7 +537,7 @@ const simplePageFallback: Record<string, SimplePageContent> = {
     eyebrow: "Work",
     title: "Selected case studies.",
     description:
-      "A handful of recent engagements we're proud to put our name on. More available on request — some work lives behind NDAs.",
+      "A handful of recent engagements we're proud to put our name on. More available on request, since some work lives behind NDAs.",
   },
 };
 
