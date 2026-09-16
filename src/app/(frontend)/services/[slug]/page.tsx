@@ -120,7 +120,6 @@ export default async function ServiceDetailPage({
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              <span className="inline-block h-px w-8 bg-muted-foreground/60" />
               What you get
             </p>
             <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl text-balance">
@@ -156,7 +155,6 @@ export default async function ServiceDetailPage({
           <div className="md:col-span-5">
             <FadeIn>
               <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                <span className="inline-block h-px w-8 bg-muted-foreground/60" />
                 Deliverables
               </p>
               <h2 className="font-display text-4xl md:text-5xl leading-[1.02] tracking-[-0.02em] text-balance mb-8">
@@ -181,7 +179,6 @@ export default async function ServiceDetailPage({
           <div className="md:col-span-7">
             <FadeIn>
               <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                <span className="inline-block h-px w-8 bg-muted-foreground/60" />
                 Engagement options
               </p>
               <h2 className="font-display text-4xl md:text-5xl leading-[1.02] tracking-[-0.02em] text-balance mb-8">
@@ -236,7 +233,6 @@ export default async function ServiceDetailPage({
         <div className="mx-auto max-w-7xl px-6">
           <FadeIn>
             <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              <span className="inline-block h-px w-8 bg-muted-foreground/60" />
               The process
             </p>
             <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl text-balance">
@@ -269,7 +265,6 @@ export default async function ServiceDetailPage({
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 md:grid-cols-12">
           <FadeIn className="md:col-span-4">
             <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              <span className="inline-block h-px w-8 bg-muted-foreground/60" />
               FAQ
             </p>
             <h2 className="font-display text-4xl md:text-5xl leading-[1.02] tracking-[-0.02em] text-balance">

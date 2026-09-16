@@ -52,7 +52,6 @@ export function Stats({
         <div className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <FadeIn>
             <p className="mb-4 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-              <span className="inline-block h-px w-8 bg-muted-foreground/60" />
               {eyebrow}
             </p>
             <h2 className="font-display text-3xl md:text-5xl leading-[1.02] tracking-[-0.02em] text-balance max-w-xl">

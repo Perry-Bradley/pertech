@@ -35,7 +35,6 @@ export function PageHeader({
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground"
           >
-            <span className="inline-block h-px w-8 bg-muted-foreground/60" />
             {eyebrow}
           </motion.p>
         )}

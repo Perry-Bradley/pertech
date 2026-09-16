@@ -66,7 +66,6 @@ export default async function AboutPage() {
           <div className="mx-auto max-w-7xl px-6">
             <FadeIn>
               <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                <span className="inline-block h-px w-8 bg-muted-foreground/60" />
                 {c.principlesEyebrow}
               </p>
               <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl">
@@ -154,7 +153,6 @@ function ExpertiseSection() {
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
           <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            <span className="inline-block h-px w-8 bg-muted-foreground/60" />
             Expertise
           </p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl">
@@ -225,7 +223,6 @@ function ExperienceSection() {
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
           <p className="mb-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            <span className="inline-block h-px w-8 bg-muted-foreground/60" />
             Experience
           </p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-[-0.02em] mb-14 max-w-3xl">
