@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { GridPattern } from "@/components/animations/grid-pattern";
 import { Magnetic } from "@/components/animations/magnetic";
 import { Noise } from "@/components/animations/noise";
@@ -76,7 +76,6 @@ export function Hero({
           {badge && <Badge variant="dot">{badge}</Badge>}
           {meta && (
             <span className="hidden sm:inline-flex items-center gap-2 text-xs font-medium text-muted-foreground">
-              <Sparkles className="h-3 w-3" />
               {meta}
             </span>
           )}
